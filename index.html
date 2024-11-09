@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pastas Marchetto</title>
     <style>
-        /* Estilos generales */
         body {
             background-color: lightgrey;
             font-family: sans-serif;
@@ -13,34 +12,30 @@
             padding: 0;
         }
 
-        /* Contenedor principal */
         .container {
             margin: auto;
-            background-color: white;
-            width: 1200px;
-            padding: 20px;
+            background-color:#d7ccaf;
+            padding: 10px;
+            max-width: 100%;
         }
 
-        /* Barra de encabezado */
         .header {
             text-align: center;
             padding: 20px 0;
             border-bottom: 2px solid #d7ccaf;
         }
 
-        /* Encabezado de la empresa */
         .header h1 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             color: #be8061;
             margin: 10px 0;
         }
 
         .header p {
             color: black;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
-        /* WhatsApp fijo */
         .whatsapp-fixed {
             position: fixed;
             bottom: 20px;
@@ -50,6 +45,7 @@
             border-radius: 50%;
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
         }
 
         .whatsapp-fixed a {
@@ -57,42 +53,54 @@
             color: white;
         }
 
-        /* Slider principal */
+        .instagram-fixed {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #C13584;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+        }
+
         .slider {
-            position: relative;
-            width: 100%;
-            height: 450px;
+            width: 600px;
+            height: 600px;
             overflow: hidden;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .slider img {
-            width: 100%;
-            height: 450px;
+            width:100%;
+            height: auto;
             object-fit: cover;
         }
 
-        /* Miniaturas */
         .thumbnails {
             display: flex;
-            justify-content: center;
-            margin-top: 15px;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            margin-top: 10px;
         }
 
         .thumbnails img {
-            width: 150px;
-            height: 100px;
-            margin: 0 5px;
+            width: 100px;
+            height: 80px;
+            margin: 5px;
             cursor: pointer;
             border: 2px solid #d7ccaf;
             border-radius: 5px;
             transition: transform 0.2s;
+            object-fit: cover;
         }
 
         .thumbnails img:hover {
             transform: scale(1.1);
         }
 
-        /* Icono del carrito */
         .cart-icon {
             position: fixed;
             top: 20px;
@@ -105,13 +113,13 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        /* Carrito de compras */
         .cart {
             position: fixed;
             top: 80px;
             right: 20px;
             background-color: white;
-            width: 300px;
+            width: 90%;
+            max-width: 300px;
             max-height: 400px;
             overflow-y: auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -121,100 +129,208 @@
             color: black;
         }
 
-        /* Información de contacto e iconos */
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            margin-top: 15px;
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none;
+            z-index: 10;
+            width: 80%;
+            max-width: 300px;
         }
-
-        .contact-info a {
+        
+        .popup h2 {
             color: #be8061;
-            font-size: 1.2rem;
-            margin: 0 15px;
-            text-decoration: none;
+            margin-bottom: 10px;
         }
 
-        .contact-info i {
-            font-size: 2rem;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 5;
+        }
+
+        /* Estilos para input, select y button */
+        input[type="text"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #d7ccaf;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #be8061;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #be8061;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #d7ccaf;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 80%;
+            }
+
+            .slider {
+                height: 450px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .thumbnails img {
+                width: 150px;
+                height: 100px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Encabezado de la empresa -->
     <div class="header">
-        <img src="logo.png" alt="Logotipo de Pastas Marchetto" width="100">
-        <h1>Pastas Marchetto</h1>
-        <p>Compras y ventas minoristas<br>📍Adrogué<br>La pasión por la pasta fresca, ahora en tus manos<br>Hechas con ingredientes frescos y amor</p>
+        <img src="./img/logo.png" alt="" width="150" style="border-radius: 50%;">
     </div>
 
-    <!-- Contenedor principal -->
     <div class="container">
-        <!-- Slider principal -->
         <div class="slider">
-            <img id="mainImage" src="https://i2.wp.com/robbreport.mx/wp-content/uploads/2020/03/portada.jpg?fit=770%2C413&ssl=1" alt="Pasta">
+            <img id="mainImage" src="./img/IMG-20241028-WA0003.jpg" alt="Pasta" onclick="showPopup()">
         </div>
 
-        <!-- Miniaturas de las imágenes -->
         <div class="thumbnails">
-            <img src="https://i2.wp.com/robbreport.mx/wp-content/uploads/2020/03/portada.jpg?fit=770%2C413&ssl=1" onclick="changeImage(this)">
-            <img src="https://cdn-3.expansion.mx/dims4/default/fdfd972/2147483647/strip/true/crop/862x572+0+0/resize/1800x1194!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F56%2F3f%2F78be7e124cd197f1a14345a9c19e%2Fcaptura.JPG" onclick="changeImage(this)">
-            <img src="https://i.ibb.co/1Rc8GdT/1.jpg" onclick="changeImage(this)">
+            <img src="img/IMG-20241020-WA0001.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241020-WA0002.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241030-WA0002.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241101-WA0004.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241105-WA0003.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241105-WA0004.jpg" onclick="changeImage(this)">
+            <img src="img/IMG-20241109-WA0003.jpg" onclick="changeImage(this)">
+            <img src="./img/IMG-20241109-WA0004.jpg" onclick="changeImage(this)">
         </div>
     </div>
 
-    <!-- Icono del carrito de compras -->
-    <div class="cart-icon" onclick="toggleCart()">
-        🛒
-    </div>
+    <p>Compras y ventas minoristas<br>📍Adrogué<br>La pasión por la pasta fresca, ahora en tus manos<br>Hechas con ingredientes frescos y amor</p>
+    
+    <div class="cart-icon" onclick="toggleCart()">🛒</div>
 
-    <!-- Carrito de compras -->
     <div class="cart" id="cart">
         <h3>Carrito de Compras</h3>
         <ul id="cartItems"></ul>
+        <label for="clientName">Nombre:</label>
+        <input type="text" id="clientName" required><br><br>
+        <label for="clientPhone">Teléfono:</label>
+        <input type="text" id="clientPhone" required><br><br>
         <button onclick="sendOrder()">Enviar Pedido</button>
     </div>
 
-    <!-- WhatsApp fijo -->
-    <div class="whatsapp-fixed">
-        <a href="https://api.whatsapp.com/send?phone=5491137047627" target="_blank">
-            📱 1137047627
-        </a>
+    <div class="popup" id="popup">
+        <h2>Selecciona las opciones de la pasta</h2>
+        <label for="quantity">Cantidad:</label>
+        <input type="number" id="quantity" min="1" value="1"><br><br>
+        <label for="flavor">Relleno:</label>
+        <select id="flavor">
+            <option value="Salsa de tomate">Verdura y ricota</option>
+            <option value="Alfredo">Jamon , Muzzarella y ricota</option>
+            
+        </select><br><br>
+        <label for="flavor">Masa</label>
+        <select id="flavor">
+            <option value="Salsa de tomate">Espinaca</option>
+            <option value="Alfredo">Calabaza</option>
+            <option value="Alfredo">Comun</option>
+
+
+            
+        </select><br><br>
+        <button onclick="addToCart()">Agregar al Carrito</button>
+        <button onclick="closePopup()">Cerrar</button>
     </div>
 
-    <!-- Información de contacto -->
-    <div class="contact-info">
-        <a href="https://www.instagram.com/pastasmarchetto/profilecard/?igsh=czV2dzZvZzFlaXR6" target="_blank">
-            <i class="fa fa-instagram"></i> Instagram
-        </a>
+    <div class="overlay" id="overlay" onclick="closePopup()"></div>
+
+    <div class="whatsapp-fixed">
+        <a href="https://api.whatsapp.com/send?phone=5491137047627">📞</a>
+    </div>
+
+    <div class="instagram-fixed">
+        <a href="https://instagram.com">📸</a>
     </div>
 
     <script>
-        // Cambiar la imagen principal al hacer clic en una miniatura
+        function showPopup() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+            document.getElementById("overlay").style.display = "none";
+        }
+
         function changeImage(element) {
             document.getElementById("mainImage").src = element.src;
         }
 
-        // Mostrar/Ocultar carrito de compras
-        function toggleCart() {
-            const cart = document.getElementById("cart");
-            cart.style.display = cart.style.display === "none" ? "block" : "none";
+        function addToCart() {
+            const quantity = document.getElementById("quantity").value;
+            const flavor = document.getElementById("flavor").value;
+            const cartItems = document.getElementById("cartItems");
+
+            const item = document.createElement("li");
+            item.textContent = `Pasta ${flavor}, Cantidad: ${quantity}`;
+            cartItems.appendChild(item);
+
+            closePopup();
         }
 
-        // Función para enviar el pedido vía WhatsApp
+        function toggleCart() {
+            const cart = document.getElementById("cart");
+            cart.style.display = cart.style.display === "block" ? "none" : "block";
+        }
+
         function sendOrder() {
-            const cartItems = document.getElementById("cartItems").innerText;
-            if (cartItems) {
-                const whatsappLink = `https://api.whatsapp.com/send?phone=5491137047627&text=${encodeURIComponent("Hola, me gustaría realizar el siguiente pedido: " + cartItems)}`;
-                window.open(whatsappLink, "_blank");
+            const name = document.getElementById("clientName").value;
+            const phone = document.getElementById("clientPhone").value;
+
+            if (name && phone) {
+                alert(`Pedido enviado por ${name} (${phone})`);
+                document.getElementById("cart").style.display = "none";
             } else {
-                alert("El carrito está vacío.");
+                alert("Por favor, ingresa tu nombre y teléfono.");
             }
         }
     </script>
+
 </body>
 </html>
+
 
 
     <p>Todos los derechos reservados.</p>
