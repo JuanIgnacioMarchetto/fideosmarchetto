@@ -1,53 +1,221 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-   
-    <title>Carrusel</title>
-         <link rel="stylesheet" href="./styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastas Marchetto</title>
+    <style>
+        /* Estilos generales */
+        body {
+            background-color: lightgrey;
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-  
+        /* Contenedor principal */
+        .container {
+            margin: auto;
+            background-color: white;
+            width: 1200px;
+            padding: 20px;
+        }
 
+        /* Barra de encabezado */
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #d7ccaf;
+        }
+
+        /* Encabezado de la empresa */
+        .header h1 {
+            font-size: 2.5rem;
+            color: #be8061;
+            margin: 10px 0;
+        }
+
+        .header p {
+            color: black;
+            font-size: 1.1rem;
+        }
+
+        /* WhatsApp fijo */
+        .whatsapp-fixed {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .whatsapp-fixed a {
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Slider principal */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+        }
+
+        .slider img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+
+        /* Miniaturas */
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .thumbnails img {
+            width: 150px;
+            height: 100px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid #d7ccaf;
+            border-radius: 5px;
+            transition: transform 0.2s;
+        }
+
+        .thumbnails img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Icono del carrito */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #be8061;
+            padding: 10px;
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Carrito de compras */
+        .cart {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background-color: white;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none;
+            padding: 15px;
+            color: black;
+        }
+
+        /* Información de contacto e iconos */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .contact-info a {
+            color: #be8061;
+            font-size: 1.2rem;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .contact-info i {
+            font-size: 2rem;
+        }
+    </style>
 </head>
-  
 <body>
+
+    <!-- Encabezado de la empresa -->
+    <div class="header">
+        <img src="logo.png" alt="Logotipo de Pastas Marchetto" width="100">
+        <h1>Pastas Marchetto</h1>
+        <p>Compras y ventas minoristas<br>📍Adrogué<br>La pasión por la pasta fresca, ahora en tus manos<br>Hechas con ingredientes frescos y amor</p>
+    </div>
+
+    <!-- Contenedor principal -->
     <div class="container">
-        <ul class="slider">
-           <li id="slide1">
-            <img src="https://i2.wp.com/robbreport.mx/wp-content/uploads/2020/03/portada.jpg?fit=770%2C413&ssl=1"/>
-          </li>
-          <li id="slide2">
-            <img src="https://cdn-3.expansion.mx/dims4/default/fdfd972/2147483647/strip/true/crop/862x572+0+0/resize/1800x1194!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F56%2F3f%2F78be7e124cd197f1a14345a9c19e%2Fcaptura.JPG"/>
-          <li id="slide3">
-            <img src="https://i.ibb.co/1Rc8GdT/1.jpg"/>
-          </li>
-          
-          </li>
-         
-          <li id="slide4">
-            <h1>Ejemplo con otros elementos</h1>
-            <p>Esto es un párrafo de ejemplo para comprobar que podemos meter cualquier tipo de elementos en el slider</p>
-             <a href="https://www.todocuadros.com.mx/pintores-famosos/van-gogh/">Vincent de van Gogh</a>
-          </li>
-      z
-        </ul>
-        
-        <ul class="menu">
-          <li>
-            <a href="#slide1">1</a>
-          </li>
-          <li>
-            <a href="#slide2">2</a>
-          </li>
-           <li>
-            <a href="#slide3">3</a>
-          </li>
-          <li>
-            <a href="#slide4">4</a>
-          </li>
-        </ul>
-        
-      </div>
+        <!-- Slider principal -->
+        <div class="slider">
+            <img id="mainImage" src="https://i2.wp.com/robbreport.mx/wp-content/uploads/2020/03/portada.jpg?fit=770%2C413&ssl=1" alt="Pasta">
+        </div>
+
+        <!-- Miniaturas de las imágenes -->
+        <div class="thumbnails">
+            <img src="https://i2.wp.com/robbreport.mx/wp-content/uploads/2020/03/portada.jpg?fit=770%2C413&ssl=1" onclick="changeImage(this)">
+            <img src="https://cdn-3.expansion.mx/dims4/default/fdfd972/2147483647/strip/true/crop/862x572+0+0/resize/1800x1194!/quality/90/?url=https%3A%2F%2Fcdn-3.expansion.mx%2F56%2F3f%2F78be7e124cd197f1a14345a9c19e%2Fcaptura.JPG" onclick="changeImage(this)">
+            <img src="https://i.ibb.co/1Rc8GdT/1.jpg" onclick="changeImage(this)">
+        </div>
+    </div>
+
+    <!-- Icono del carrito de compras -->
+    <div class="cart-icon" onclick="toggleCart()">
+        🛒
+    </div>
+
+    <!-- Carrito de compras -->
+    <div class="cart" id="cart">
+        <h3>Carrito de Compras</h3>
+        <ul id="cartItems"></ul>
+        <button onclick="sendOrder()">Enviar Pedido</button>
+    </div>
+
+    <!-- WhatsApp fijo -->
+    <div class="whatsapp-fixed">
+        <a href="https://api.whatsapp.com/send?phone=5491137047627" target="_blank">
+            📱 1137047627
+        </a>
+    </div>
+
+    <!-- Información de contacto -->
+    <div class="contact-info">
+        <a href="https://www.instagram.com/pastasmarchetto/profilecard/?igsh=czV2dzZvZzFlaXR6" target="_blank">
+            <i class="fa fa-instagram"></i> Instagram
+        </a>
+    </div>
+
+    <script>
+        // Cambiar la imagen principal al hacer clic en una miniatura
+        function changeImage(element) {
+            document.getElementById("mainImage").src = element.src;
+        }
+
+        // Mostrar/Ocultar carrito de compras
+        function toggleCart() {
+            const cart = document.getElementById("cart");
+            cart.style.display = cart.style.display === "none" ? "block" : "none";
+        }
+
+        // Función para enviar el pedido vía WhatsApp
+        function sendOrder() {
+            const cartItems = document.getElementById("cartItems").innerText;
+            if (cartItems) {
+                const whatsappLink = `https://api.whatsapp.com/send?phone=5491137047627&text=${encodeURIComponent("Hola, me gustaría realizar el siguiente pedido: " + cartItems)}`;
+                window.open(whatsappLink, "_blank");
+            } else {
+                alert("El carrito está vacío.");
+            }
+        }
+    </script>
 </body>
- <footer>
+</html>
+
 
     <p>Todos los derechos reservados.</p>
 
